@@ -44,9 +44,9 @@ if __name__ == '__main__':
     for index in range(0,CPU_CORES):
         stats[f"core{index}"] = int(data["coretemp-isa-0000"][f"Core {index}"][f"temp{index+CORE_OFFSET}_input"])
 
-    stats["pch"] = int(data["pch_cannonlake-virtual-0"]["temp1"]["temp1_input"])
-    stats["acpitz"] = int(data["acpitz-acpi-0"]["temp2"]["temp2_input"])
-    stats["nvme-pci"] = int(data["nvme-pci-3a00"]["Composite"]["temp1_input"])
+    stats["pch"] = int(data["radeon-pci-0100"]["temp1"]["temp1_input"])
+    stats["acpitz"] = int(data["acpitz-acpi-0"]["temp1"]["temp1_input"])
+    stats["nvme-pci"] = int(data["nvme-pci-0200"]["Composite"]["temp1_input"])
 
     measurements.append({
         "measurement": "temp",
