@@ -31,7 +31,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "gridPos": {
           "h": 1,
@@ -56,7 +56,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "gridPos": {
           "h": 1,
@@ -81,7 +81,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -226,10 +226,10 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "hide": false,
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"memory\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /memused|memshared|memfree/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"memory\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /memused|memshared|memfree/)\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\n  |> yield(name: \"mean\")",
             "refId": "A"
           }
         ],
@@ -239,7 +239,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -325,7 +325,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -344,7 +344,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"available_spare\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"available_spare\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -370,7 +370,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -452,7 +452,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -471,7 +471,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"raw_read_error_rate\" or r[\"_field\"] == \"write_error_rate\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"raw_read_error_rate\" or r[\"_field\"] == \"write_error_rate\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -497,7 +497,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -595,7 +595,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -614,7 +614,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m )\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"critical_warning\" or r[\"_field\"] == \"unsafe_shutdowns\" or r[\"_field\"] == \"media_errors\" or r[\"_field\"] == \"num_err_log_entries\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m )\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"critical_warning\" or r[\"_field\"] == \"unsafe_shutdowns\" or r[\"_field\"] == \"media_errors\" or r[\"_field\"] == \"num_err_log_entries\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -639,7 +639,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -737,7 +737,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -756,7 +756,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m )\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"reallocate_nand_blk_cnt\" or r[\"_field\"] == \"erase_fail_count\" \n                    or r[\"_field\"] == \"program_fail_count\" or r[\"_field\"] == \"error_correction_count\" \n                    or r[\"_field\"] == \"reallocated_event_count\" or r[\"_field\"] == \"udma_crc_error_count\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m )\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"reallocate_nand_blk_cnt\" or r[\"_field\"] == \"erase_fail_count\" \n                    or r[\"_field\"] == \"program_fail_count\" or r[\"_field\"] == \"error_correction_count\" \n                    or r[\"_field\"] == \"reallocated_event_count\" or r[\"_field\"] == \"udma_crc_error_count\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -781,7 +781,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -868,7 +868,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -887,7 +887,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"data_units_read\" or r[\"_field\"] == \"data_units_written\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"data_units_read\" or r[\"_field\"] == \"data_units_written\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -912,7 +912,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -999,7 +999,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1018,7 +1018,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"total_lbas_written\")\n  |> map(fn: (r) => ({r with _value: r._value * 512}))\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] == \"total_lbas_written\")\n  |> map(fn: (r) => ({r with _value: r._value * 512}))\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -1043,7 +1043,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1135,7 +1135,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1154,7 +1154,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /raw_read_error_rate|write_error_rate|reallocate_nand_blk_cnt/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"sata\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /raw_read_error_rate|write_error_rate|reallocate_nand_blk_cnt/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -1180,7 +1180,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1290,19 +1290,19 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "hide": false,
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) =>\n    r.host == \"pve\" and\n    r._measurement == \"temp\" and\n    r._field !~ /core/\n  )\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) =>\n    r.host == \"pve\" and\n    r._measurement == \"temp\" and\n    r._field !~ /core/\n  )\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)",
             "refId": "A"
           },
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "hide": false,
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) =>\n    r.host == \"pve\" and\n    r.devtype == \"sata\" and\n    r._measurement == \"disks\" and\n    r._field == \"temperature_celsius\"\n  )\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) =>\n    r.host == \"pve\" and\n    r.devtype == \"sata\" and\n    r._measurement == \"disks\" and\n    r._field == \"temperature_celsius\"\n  )\n  |> aggregateWindow(every: v.windowPeriod, fn: mean)",
             "refId": "B"
           }
         ],
@@ -1312,7 +1312,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1399,7 +1399,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1418,7 +1418,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"data_units_read_from_day1\" or r[\"_field\"] == \"data_units_written_from_day1\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: -5m)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"data_units_read_from_day1\" or r[\"_field\"] == \"data_units_written_from_day1\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -1443,7 +1443,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1536,7 +1536,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1555,7 +1555,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /available_spare$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /available_spare$/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
@@ -1577,7 +1577,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1596,7 +1596,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /critical_warning|media_errors/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] =~ /critical_warning|media_errors/)\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "B",
             "resultFormat": "time_series",
             "select": [
@@ -1622,7 +1622,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1719,10 +1719,10 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "hide": false,
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system\")\n  |> filter(fn: (r) => r[\"_field\"] == \"avail\")\n  |> filter(fn: (r) => r[\"host\"] == \"local-lvm\" or r[\"host\"] == \"synology-backup-ct-vm\" or r[\"host\"] == \"local\" or r[\"host\"] == \"proxmox-backup-server-sata-2TB\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"system\")\n  |> filter(fn: (r) => r[\"_field\"] == \"avail\")\n  |> filter(fn: (r) => r[\"host\"] == \"local-lvm\" or r[\"host\"] == \"synology-backup-ct-vm\" or r[\"host\"] == \"local\" or r[\"host\"] == \"proxmox-backup-server-sata-2TB\")\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)",
             "refId": "A"
           }
         ],
@@ -1732,7 +1732,7 @@
       {
         "datasource": {
           "type": "influxdb",
-          "uid": "2NG1uG8Mk"
+          "uid": "ssx0AtB4z"
         },
         "fieldConfig": {
           "defaults": {
@@ -1823,7 +1823,7 @@
           {
             "datasource": {
               "type": "influxdb",
-              "uid": "2NG1uG8Mk"
+              "uid": "ssx0AtB4z"
             },
             "groupBy": [
               {
@@ -1842,7 +1842,7 @@
             "hide": false,
             "orderByTime": "ASC",
             "policy": "default",
-            "query": "from(bucket: \"pve-bucket\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"num_err_log_entries\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
+            "query": "from(bucket: \"proxmox\")\n  |> range(start: v.timeRangeStart, stop:v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"disks\")\n  |> filter(fn: (r) => r[\"host\"] == \"pve\")\n  |> filter(fn: (r) => r[\"devtype\"] == \"nvme\")\n  |> filter(fn: (r) => r[\"_field\"] == \"num_err_log_entries\")\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)",
             "refId": "A",
             "resultFormat": "time_series",
             "select": [
